@@ -11,7 +11,7 @@ using namespace std;
 int main ( )
 { 
 int quart, dim, nick; 
-double pennies; 
+float pennies; 
 cout<<"Enter quarters:"; 
 cin>>quart; 
 cout<<"Enter dimes:"; 
