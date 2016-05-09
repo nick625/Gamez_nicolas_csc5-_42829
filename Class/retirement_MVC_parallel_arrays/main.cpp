@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
     float pv=0.0f;      //Present value of retirement account
     float iRate=0.05f;  //Interest rate from municipal bond investments
     const int SIZE=1000;//SIZE of the array
-    float fv[SIZE][COLMAX]={};  //Initialize the array to zero  
+    float fv[SIZE][COLMAX]={{},{}};  //Initialize the array to zero  
           fv[0][1]=pv;    //Retirement account value to known when to retire
           fv[0][0]=0;     //Years
     float yrlyDep;      //Yearly Deposit in $'s
