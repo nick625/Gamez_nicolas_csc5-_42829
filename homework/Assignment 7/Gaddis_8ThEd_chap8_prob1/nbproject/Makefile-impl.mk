@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Marksort_V2_Datebase_Pointer
+PROJECTNAME=Gaddis_8ThEd_chap8_prob1
 
 # Active Configuration
 DEFAULTCONF=Debug

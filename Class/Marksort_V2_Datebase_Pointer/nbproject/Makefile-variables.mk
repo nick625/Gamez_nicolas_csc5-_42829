@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin_4.x-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Debug=marksort_v2_datebase_2
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/marksort_v2_datebase_2
+CND_ARTIFACT_NAME_Debug=marksort_v2_datebase_pointer
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/marksort_v2_datebase_pointer
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Debug=marksortv2datebase2.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/marksortv2datebase2.tar
+CND_PACKAGE_NAME_Debug=marksortv2datebasepointer.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/marksortv2datebasepointer.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin_4.x-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Release=marksort_v2_datebase_2
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/marksort_v2_datebase_2
+CND_ARTIFACT_NAME_Release=marksort_v2_datebase_pointer
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/marksort_v2_datebase_pointer
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Release=marksortv2datebase2.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/marksortv2datebase2.tar
+CND_PACKAGE_NAME_Release=marksortv2datebasepointer.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/marksortv2datebasepointer.tar
 #
 # include compiler specific variables
 #
