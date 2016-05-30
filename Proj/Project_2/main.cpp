@@ -3,7 +3,7 @@
  * Author: nicolas gamez
  * Created on April 28, 2016, 2:47 PM
  */
-//line 62 testing (ai_real)
+
 //system libraries
 #include <iostream>
 #include <iomanip>
@@ -16,15 +16,18 @@ using namespace std;
 
 //Global Constants
 const int COL_SIZE = 10;
-//const int SHIPE = 7;
+
 //Function Prototypes
 void print(char[][COL_SIZE], char[][COL_SIZE], const int);
 bool win(int,int);
 //Execution Begins Here
 
 int main(int argc, char** argv) {
+    const int SHIPS = 6;
+    const int SHIPE = 6;
+    char const SHIP[SHIPS] = {'S', 'S', 'S', 'S', 'S', 'S'};
+    char const Ship[SHIPE] = {'E', 'E', 'E', 'E', 'E', 'E'};
     const int ROW_SIZE = 5;
-    const int SHIPS=6;
     unsigned seed = time(0);
     srand(seed);
     //Declare Variables
@@ -46,7 +49,7 @@ int main(int argc, char** argv) {
             ai_real[row][colmn]= ' ';
         }
     }
-    print(player_grid, ai_real, ROW_SIZE);
+    print(player_grid, ai_fake, ROW_SIZE);
     //Players
     for (int i = 0; i < SHIPS; i++) {
         //ask them to set up their ships
@@ -56,15 +59,14 @@ int main(int argc, char** argv) {
                 cin >> x>>y;
             } while (x > 9 || x < 0 || y > 4 || y < 0);
             if (player_grid[y][x] == ' ') {
-                player_grid[y][x] = 49+i;
-                //!!
+                player_grid[y][x] == SHIP[i];
                 print(player_grid, ai_fake, ROW_SIZE);
-                //!!
+                
             } else {
                 cout << "overlap\n";
             }
 
-        } while (player_grid[y][x] != 49+i);
+        } while (player_grid[y][x] != SHIP[i]);
     }
 
     //ai placement
@@ -74,9 +76,9 @@ int main(int argc, char** argv) {
             x = rand() % 10;
             y = (rand() % 5);
             if (ai_real[y][x] == ' ') {
-                ai_real[y][x] = 49+i;
+                ai_real[y][x] = Ship[i];
                   }
-        } while (ai_real[y][x] != 49+i);
+        } while (ai_real[y][x] != Ship[i]);
     }
     print(player_grid, ai_fake, ROW_SIZE);
     cout << endl;
@@ -89,29 +91,31 @@ int main(int argc, char** argv) {
         cout << "Enter row(0-4): ";
         cin >> x;
         cout << endl;
-    while(x > 9 || x < 0 || y > 4 || y < 0){
+    while(y > 9 || y < 0 || x > 4 || x < 0){
         cout << "Please enter your coordinates:";
         cout << "Enter column(0-9): ";
         cin.ignore();
         cin>>y;
         cout << "Enter row(0-4): ";
-        cin >> x;   
+        cin >> x;  
     }
 
-        if (ai_real[x][y] == ' ') {
-            ai_real[x][y] ='O';
+        if (ai_fake[x][y] == ' ') {
+             eSunk++;
+            ai_fake[x][y] ='O';
             cout << "It was a miss! \n";
         } else {
-            ai_real[x][y] = 'X';
+            ai_fake[x][y] = 'X';
             cout << "It was a Hit! \n";
         }
          print(player_grid, ai_fake, ROW_SIZE);
          
         //AI gus
-        x = rand() % 10;
-        y = rand() % 5;
+        x = rand() % 5;
+        y = rand() % 10;
         cout << x << ", " << y << endl;
         if (player_grid[x][y] == ' ') {
+              aiSunk++;
             player_grid[x][y] ='O';
             cout << "It was a miss! \n";
         } else {
