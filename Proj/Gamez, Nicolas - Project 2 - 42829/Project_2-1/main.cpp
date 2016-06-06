@@ -1,5 +1,5 @@
 /*
- * File: prject 1
+ * File: prject 2
  * Author: nicolas gamez
  * Created on April 28, 2016, 2:47 PM
  */
@@ -10,45 +10,51 @@
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include <fstream> //Writing to a file
 using namespace std;
 
 //User Libraries
 
 //Global Constants
 const int COL_SIZE = 10;
-
+const int SHIPS = 6;
+const int SHIPE = 6;
+const int ROW_SIZE = 5;
 //Function Prototypes
 void print(char[][COL_SIZE], char[][COL_SIZE], const int);
 bool win(int,int);
 //Execution Begins Here
 
 int main(int argc, char** argv) {
-    const int SHIPS = 6;
-    const int SHIPE = 6;
-    char const SHIP[SHIPS] = {'S', 'S', 'S', 'S', 'S', 'S'};
-    char const Ship[SHIPE] = {'E', 'E', 'E', 'E', 'E', 'E'};
+   
+    const char SHIP[SHIPS] = {'S', 'S', 'S', 'S', 'S', 'S'};
+    const char Ship[SHIPE] = {'E', 'E', 'E', 'E', 'E', 'E'};
     const int ROW_SIZE = 5;
     unsigned seed = time(0);
     srand(seed);
+    
     //Declare Variables
     char FREE = '|';
     int eSunk = 0; // you sunk these
     int aiSunk = 0; // ai sunk these
     bool won;
     int x, y;
+    char yn='y';
     char player_grid[ROW_SIZE][COL_SIZE];
     char ai_fake[ROW_SIZE][COL_SIZE];       //display to the player
-    char ai_real[ROW_SIZE][COL_SIZE];       //store the data
-    
-    
+    char ai_real[ROW_SIZE][COL_SIZE];       //store the ai Ships
+   
+    do{  
     //initialize
-    for (int row = 0; row < 10; row++) {
+    for (int row = 0; row < ROW_SIZE; row++) {
         for (int colmn = 0; colmn < 10; colmn++) {
             player_grid[row][colmn] = ' ';
             ai_fake[row][colmn]= ' ';      
             ai_real[row][colmn]= ' ';
         }
     }
+  
+
     print(player_grid, ai_fake, ROW_SIZE);
     //Players
     for (int i = 0; i < SHIPS; i++) {
@@ -59,7 +65,7 @@ int main(int argc, char** argv) {
                 cin >> x>>y;
             } while (x > 9 || x < 0 || y > 4 || y < 0);
             if (player_grid[y][x] == ' ') {
-                player_grid[y][x] == SHIP[i];
+                player_grid[y][x] = SHIP[i];
                 print(player_grid, ai_fake, ROW_SIZE);
                 
             } else {
@@ -99,14 +105,13 @@ int main(int argc, char** argv) {
         cout << "Enter row(0-4): ";
         cin >> x;  
     }
-
-        if (ai_fake[x][y] == ' ') {
+        if (ai_real[x][y] == 'E') {
              eSunk++;
-            ai_fake[x][y] ='O';
-            cout << "It was a miss! \n";
-        } else {
-            ai_fake[x][y] = 'X';
+             ai_fake[x][y] ='X';
             cout << "It was a Hit! \n";
+        } else {
+            ai_fake[x][y] = 'O';
+            cout << "It was a Miss! \n";
         }
          print(player_grid, ai_fake, ROW_SIZE);
          
@@ -114,17 +119,28 @@ int main(int argc, char** argv) {
         x = rand() % 5;
         y = rand() % 10;
         cout << x << ", " << y << endl;
-        if (player_grid[x][y] == ' ') {
+        if (player_grid[x][y] == 'S') {
               aiSunk++;
-            player_grid[x][y] ='O';
-            cout << "It was a miss! \n";
-        } else {
-            player_grid[x][y] = 'X';
+            player_grid[x][y] ='X';
             cout << "It was a Hit! \n";
+        } else {
+            player_grid[x][y] = 'O';
+            cout << "It was a Miss! \n";
         }
         print(player_grid, ai_fake, ROW_SIZE);
     }while (!win( eSunk, aiSunk ));
-    
+    do
+{
+	cout << "DO you want to play again?? : Enter a 'y' or 'n' " << endl;
+	cin >> yn;
+
+if(yn!='y'&& yn!='Y'&&yn!='n'&&yn!='N')
+	cout<< "I only respond to the letters 'y' or 'n'"<< "Try again!!"<< endl;
+}while(yn!='y' && yn!='Y' && yn!='n' && yn!='N');
+}while (yn=='y' || yn=='Y');
+
+	cout << "you now quit the game" << endl;
+        
     return 0;
 }
 
